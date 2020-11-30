@@ -1,7 +1,7 @@
 OLDIFS=$IFS;
 IFS=$'\n'
 
-  usermod -d "/mogafx01" -g users -s /usr/sbin/nologin mogafx01
+  usermod -d "/mogafx01" -g users -s /usr/sbin/nologin user01
 
 
 
