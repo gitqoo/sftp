@@ -1,0 +1,21 @@
+version: "2.3"
+services:
+  sftp:
+    image: dockerqoo/atmoz-sftp
+    container_name: sftp
+    hostname: sftp
+    ports:
+      - "8822:22"
+    restart: always
+    volumes:
+      - /efs/sftp/home:/home:z
+      - ./ssh_host_ed25519_key:/etc/ssh/ssh_host_ed25519_key:z
+      - ./ssh_host_rsa_key:/etc/ssh/ssh_host_rsa_key:z
+      - ./users.conf:/etc/sftp/users.conf:ro
+      - ./start_sftp.sh:/start_sftp.sh
+    command: bash start_sftp.sh
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5g"
